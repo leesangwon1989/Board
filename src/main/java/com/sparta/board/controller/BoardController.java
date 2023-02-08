@@ -3,7 +3,7 @@ package com.sparta.board.controller;
 
 import com.sparta.board.dto.BoardRequestDto;
 import com.sparta.board.dto.BoardResponseDto;
-import com.sparta.board.entity.Board;
+import com.sparta.board.dto.PasswordDto;
 import com.sparta.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,29 +22,28 @@ public class BoardController {
         return new ModelAndView("index");
     }
 
-    @PostMapping("/api/board")
-    public Board createBoard(@RequestBody BoardRequestDto requestDto) {
+    @PostMapping("/board")
+    public BoardResponseDto createBoard(@RequestBody BoardRequestDto requestDto) {
         return boardService.createBoard(requestDto);
     }
 
-    @GetMapping("/api/board")
-    public List<BoardResponseDto> getBoardList() {
-        return boardService.getBoardList();
+    @GetMapping("/board")
+    public List<BoardResponseDto> getBoard() {
+        return boardService.getBoard();
     }
 
-    @GetMapping("/api/board/{id}")
-    public BoardResponseDto getBoard(@PathVariable Long id) {
-        return boardService.getBoard(id);
+    @GetMapping("/board/{id}")
+    public BoardResponseDto getSelectedBoard(@PathVariable Long id) {
+        return boardService.getSelectedBoard(id);
     }
 
-    @PutMapping("/api/board/{id}")
-    public BoardResponseDto updateBoard(@PathVariable Long id, @RequestBody BoardRequestDto requestDto) {
+    @PutMapping("/board/{id}")
+    public Long updateBoard(@PathVariable Long id, @RequestBody BoardRequestDto requestDto) {
         return boardService.update(id, requestDto);
     }
 
-    @DeleteMapping("/api/board/{id}")
-    public String deleteBoard(@PathVariable Long id, @RequestBody BoardRequestDto requestDto) {
-        return boardService.deleteBoard(id, requestDto);
+    @DeleteMapping("/board/{id}")
+    public Long deleteBoard(@PathVariable Long id, @RequestBody PasswordDto dto) {
+        return boardService.deleteBoard(id, dto);
     }
-
 }
