@@ -17,11 +17,6 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/")
-    public ModelAndView home() {
-        return new ModelAndView("index");
-    }
-
     @PostMapping("/board")
     public BoardResponseDto createBoard(@RequestBody BoardRequestDto requestDto) {
         return boardService.createBoard(requestDto);
