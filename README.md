@@ -2,7 +2,7 @@
 
 {% embed url="https://ezlsws-organization.gitbook.io/board-guide/" %}
 
-esㄴㄴㅇㄹㅇㄹㄴㄴㄹedr
+edr
 
 <figure><img src=".gitbook/assets/1121.png" alt=""><figcaption></figcaption></figure>
 
