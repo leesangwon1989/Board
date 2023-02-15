@@ -1,8 +1,8 @@
----
-description: ...
----
-
 # README
+
+[https://ezlsws-organization.gitbook.io/board-guide/](https://ezlsws-organization.gitbook.io/board-guide/)
+
+
 
 유스케이스
 
