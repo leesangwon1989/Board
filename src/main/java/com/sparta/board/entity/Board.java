@@ -2,40 +2,38 @@ package com.sparta.board.entity;
 
 
 import com.sparta.board.dto.BoardRequestDto;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @Entity
+@Getter
 @NoArgsConstructor
 public class Board extends Timestamped {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
-    private String title;
 
     @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
-    private String contents;
+    private String title;
 
     @Column(nullable = false)
-    private String password;
+    private String contents;
 
-    public Board(BoardRequestDto requestDto) {
-        this.username = requestDto.getUsername();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private User user;
+
+    public Board(BoardRequestDto requestDto, String username) {
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
-        this.password = requestDto.getPassword();
-
+        this.username = username;
     }
 
     public void update(BoardRequestDto requestDto) {
-        this.username = requestDto.getUsername();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
     }

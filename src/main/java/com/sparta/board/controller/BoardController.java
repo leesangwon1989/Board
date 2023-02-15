@@ -3,42 +3,51 @@ package com.sparta.board.controller;
 
 import com.sparta.board.dto.BoardRequestDto;
 import com.sparta.board.dto.BoardResponseDto;
-import com.sparta.board.dto.PasswordDto;
+import com.sparta.board.entity.Board;
 import com.sparta.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class BoardController {
-
     private final BoardService boardService;
 
-    @PostMapping("/board")
-    public BoardResponseDto createBoard(@RequestBody BoardRequestDto requestDto) {
-        return boardService.createBoard(requestDto);
-    }
-
-    @GetMapping("/board")
+    //게시글 전체 조회
+    @GetMapping("/post")
     public List<BoardResponseDto> getBoard() {
+
         return boardService.getBoard();
     }
 
-    @GetMapping("/board/{id}")
-    public BoardResponseDto getSelectedBoard(@PathVariable Long id) {
-        return boardService.getSelectedBoard(id);
+    //게시글 등록
+    @PostMapping("/post")
+    public BoardResponseDto createPost(@RequestBody BoardRequestDto requestDto, HttpServletRequest request) {
+        return boardService.createPost(requestDto, request);
     }
 
-    @PutMapping("/board/{id}")
-    public Long updateBoard(@PathVariable Long id, @RequestBody BoardRequestDto requestDto) {
-        return boardService.update(id, requestDto);
+    //게시글 상세 조회
+    @GetMapping("/post/{id}")
+    public List<Board> getContents(@PathVariable Long id) {
+
+        return boardService.getContents(id);
     }
 
-    @DeleteMapping("/board/{id}")
-    public Long deleteBoard(@PathVariable Long id, @RequestBody PasswordDto dto) {
-        return boardService.deleteBoard(id, dto);
+    //게시글 수정
+    @PutMapping("/post/{id}")
+    public BoardResponseDto update(@PathVariable Long id, @RequestBody BoardRequestDto requestDto, HttpServletRequest request) {
+        return boardService.update(id, requestDto, request);
+    }
+
+    //게시글 삭제
+    @DeleteMapping("/post/{id}")
+    public String deleteBoard(@PathVariable Long id, HttpServletRequest request) {
+        return boardService.deleteBoard(id, request);
     }
 }

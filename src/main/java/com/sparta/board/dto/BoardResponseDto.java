@@ -1,25 +1,22 @@
 package com.sparta.board.dto;
 
-
 import com.sparta.board.entity.Board;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
 
 @Getter
-@Setter
+@NoArgsConstructor
 public class BoardResponseDto {
+    private Long id;
+    private String title;
+    private String contents;
+    private String username;
 
-    private final String title;
-    private final String userName;
-    private final String contents;
-    private final LocalDateTime createdAt;
 
     public BoardResponseDto(Board board) {
+        this.id = board.getId();
         this.title = board.getTitle();
-        this.userName = board.getUsername();
+        this.username = board.getUsername();
         this.contents = board.getContents();
-        this.createdAt = board.getCreatedAt();
     }
 }

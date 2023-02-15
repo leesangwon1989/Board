@@ -1,9 +1,10 @@
 package com.sparta.board.dto;
 
-
 import lombok.Getter;
 
+
 @Getter
-public class PasswordDto {
+public class LoginRequestDto {
+    private String username;
     private String password;
 }
