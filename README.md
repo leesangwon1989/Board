@@ -1,8 +1,10 @@
 # README
 
-[https://ezlsws-organization.gitbook.io/board-guide/](https://ezlsws-organization.gitbook.io/board-guide/)
+{% embed url="https://ezlsws-organization.gitbook.io/board-guide/" %}
 
+esㄴㄴㅇㄹㅇㄹㄴㄴㄹedr
 
+<figure><img src=".gitbook/assets/1121.png" alt=""><figcaption></figcaption></figure>
 
 유스케이스
 
