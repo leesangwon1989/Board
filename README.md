@@ -1,3 +1,10 @@
+# README
+
+{% embed url="https://ezlsws-organization.gitbook.io/board-guide/" %}
+
+edr
+
+<figure><img src=".gitbook/assets/1121.png" alt=""><figcaption></figcaption></figure>
 
 유스케이스
 
@@ -5,5 +12,4 @@
 
 API
 
-![image](https://user-images.githubusercontent.com/121265228/217503603-2f48aa56-69d2-4b7b-8f00-0368ba6486f3.png)
-
+![image](https://user-images.githubusercontent.com/121265228/218961513-1bb269a5-f387-4b3c-978f-863cea2c0999.png)
