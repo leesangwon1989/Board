@@ -1,10 +1,12 @@
 package com.sparta.board.entity;
 
-
 import com.sparta.board.dto.BoardRequestDto;
-import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -12,10 +14,8 @@ import lombok.NoArgsConstructor;
 public class Board extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "BOARD_ID")
     private Long id;
-
-    @Column(nullable = false)
-    private String username;
 
     @Column(nullable = false)
     private String title;
@@ -27,10 +27,13 @@ public class Board extends Timestamped {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    public Board(BoardRequestDto requestDto, String username) {
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
+    private List<Comment> commentList = new ArrayList<>();
+
+    public Board(BoardRequestDto requestDto, User user) {
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
-        this.username = username;
+        this.user = user;
     }
 
     public void update(BoardRequestDto requestDto) {
